@@ -1,14 +1,14 @@
 import Header from "./Components/Header/Header";
-import Button from "./Components/UI/Button/Button";
-import PageTitle from "./Components/UI/PageTitle/PageTitle";
+import Tasks from "./Components/Tasks/Tasks";
 
 const App = () => {
 
   return(
     <>
-    <Header />
-    <PageTitle count={ 0 } title='Task' />
-    <Button>New Task</Button>
+      <Header />
+      <section className="container">
+        <Tasks />
+      </section>
     </>
   );
 };
