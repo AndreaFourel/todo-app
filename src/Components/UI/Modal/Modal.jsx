@@ -1,9 +1,10 @@
 import Button from "../Button/Button";
-import style from './Modal.module.css'
+import style from './Modal.module.css';
+import { createPortal } from 'react-dom';
 
 const Modal = ({title = 'Default Title', variant = 'primary', isOpen, setIsOpen, children}) => {
 
-  return (
+  return createPortal(
     isOpen && <div className={style.overlay}>
       <div className={style.modal}>
         <div className={style['modal-header']}>
@@ -14,8 +15,8 @@ const Modal = ({title = 'Default Title', variant = 'primary', isOpen, setIsOpen,
           {children}
         </div>
       </div>
-    </div>
-
+    </div>,
+    document.body
   );
 }
 

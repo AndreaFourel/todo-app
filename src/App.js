@@ -6,7 +6,7 @@ const App = () => {
   return(
     <>
       <Header />
-      <section className="container">
+      <section className="container" style={{ position: 'relative' }}>
         <Tasks />
       </section>
     </>

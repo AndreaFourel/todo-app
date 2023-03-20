@@ -1,6 +1,6 @@
 .overlay {
   position: absolute;
-  inset: 0;/*comme si margin top, bottom left et right = 0 on colle la div à tous les angles*/
+  inset: 0;/*cet élément va prendre toute la place, comme si margin top, bottom left et right = 0 on colle la div à tous les angles*/
   background-color: rgba(0, 0, 0, 0.75);
   display: flex;
   justify-content: center;
