@@ -3,6 +3,7 @@ import Button from "../../Components/UI/Button/Button"
 import PageTitle from "../../Components/UI/PageTitle/PageTitle";
 import Modal from "../UI/Modal/Modal";
 import style from './Tasks.module.css';
+import TaskForm from "../UI/Forms/TaskForm";
 
 
 const Tasks = () => {
@@ -16,8 +17,7 @@ const Tasks = () => {
         <Button onClick={ () => setIsNewModalOpen(true) }>New Task</Button>
       </div>
       <Modal isOpen={ isNewTaskModalOpen } setIsOpen={ setIsNewModalOpen }> 
-        <h4>je suit tire</h4>
-        <p>je suis le ted nlk klùml jlkjmlml jmjmljl jlmjmljlmj lmjmljmljml jmljmljùqpketg</p>
+        <TaskForm />
       </Modal>
     
     </>
