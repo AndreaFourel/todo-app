@@ -11,12 +11,14 @@ const TasksTable = () => {
     <div className={ style['tasks-table-container'] }>
       <table className={ style['tasks-table'] }>
         <thead>
-          <th>Status</th>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Created at</th>
-          <th>Time</th>
-          <th>Actions</th>
+          <tr>
+            <th>Status</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Created at</th>
+            <th>Time</th>
+            <th>Actions</th>
+          </tr>
         </thead>
         <tbody>
           {
