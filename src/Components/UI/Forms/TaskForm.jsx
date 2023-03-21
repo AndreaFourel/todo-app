@@ -4,29 +4,34 @@ import TextareaField from "./TextareaField";
 import Button from "../Button/Button";
 import { TasksContext } from "../../../Contexts/TasksContext";
 
-const TaskForm = ({ closeModal }) => {
+const TaskForm = ({ closeModal, value, index }) => {
 
-  const [ formValue, setFormValue ] = useState({
+  const [ formValue, setFormValue ] = useState(value ? value :{
     title : '',
     description: '',
   });
 
   const [ invalidFields, setInvalidFields] = useState([]);
 
-  const { addTask } = useContext(TasksContext);
+  const { addTask, editTask } = useContext(TasksContext);
 
   
   const handleSubmit = (event) => {
     event.preventDefault();
-    //empêcher la soumission et donc la création d'une tâche s'il y a des erreurs
     if (invalidFields.length > 0) {
       alert ('There are errors in the form');
       return;
     }
-    addTask({ 
-      ...formValue,
-      createdAt: new Date(),
-     });
+
+    if(value && !isNaN(+index)) { // S'il y a une valeur en props => Modification
+      editTask({ task: formValue, taskIndex: index });
+    } else { //sinon création d'une nouvelle tache
+      addTask({ 
+        ...formValue,
+        createdAt: new Date(),
+       });
+    }
+    
     //Fermer la modale
      closeModal();
   }
