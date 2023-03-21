@@ -10,14 +10,20 @@ const TextField = ({ label, name, placeholder, validation, value, onChange, onEr
 
   const handleChange = (event) => {
     const { value } = event.target;
-    //gestion des erreurs
-    validateField(value, validation);
     onChange(value);
   }
 
   useEffect(() => {
+    validateField(value, validation);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ value ]);
+
+
+
+  useEffect(() => {
     onError({ name, error });
-  }, [ error, name ])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ error, name ]);
 
   return (
     <div className={ style['input-group'] }>
@@ -32,6 +38,6 @@ const TextField = ({ label, name, placeholder, validation, value, onChange, onEr
         {error && <p className={ style.error }>{ error }</p>}
     </div>
   );
-}
+};
 
 export default TextField;

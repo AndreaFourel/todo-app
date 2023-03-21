@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import TextField from "./TextField";
 import TextareaField from "./TextareaField";
 import Button from "../Button/Button";
+import { TasksContext } from "../../../Contexts/TasksContext";
 
-const TaskForm = () => {
+const TaskForm = ({ closeModal }) => {
 
   const [ formValue, setFormValue ] = useState({
     title : '',
@@ -11,6 +12,8 @@ const TaskForm = () => {
   });
 
   const [ invalidFields, setInvalidFields] = useState([]);
+
+  const { addTask } = useContext(TasksContext);
 
   
   const handleSubmit = (event) => {
@@ -20,7 +23,12 @@ const TaskForm = () => {
       alert ('There are errors in the form');
       return;
     }
-    console.log(formValue);
+    addTask({ 
+      ...formValue,
+      createdAt: new Date(),
+     });
+    //Fermer la modale
+     closeModal();
   }
 
   const handleError = (error) => { //içi on récupère { name, error }

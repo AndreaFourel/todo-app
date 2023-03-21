@@ -1,7 +1,11 @@
+import { useContext } from "react";
+import { TasksContext } from "../../../Contexts/TasksContext";
 import TaskRow from "./TaskRow";
 import style from './TasksTable.module.css';
 
 const TasksTable = () => {
+
+  const { tasksData } = useContext(TasksContext);
 
   return(
     <div className={ style['tasks-table-container'] }>
@@ -15,12 +19,13 @@ const TasksTable = () => {
           <th>Actions</th>
         </thead>
         <tbody>
-          <TaskRow task={{ title: 'Task 1', createdAt: new Date(), description: 'Hello world!' }}/>
-          <TaskRow task={{ title: 'Task 2', createdAt: new Date(), description: 'Hello u!' }}/>
-          <TaskRow task={{ title: 'Task 3', createdAt: new Date(), description: 'Hello lord!' }}/>
+          {
+            tasksData && tasksData.tasks && tasksData.tasks.map((task, index) => (
+              <TaskRow key={ Date.parse(task.createdAt) - index} task={task} />
+            ))
+          }
         </tbody>
       </table>
-
     </div>
   );
 }
