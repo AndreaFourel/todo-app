@@ -28,6 +28,15 @@ const tasksReducer = (state, action) => {
     }
   }
 
+  if (action.type === 'REMOVE_TASK' && !isNaN(+action.value)) {
+    const tasks = [ ...state.tasks];
+    tasks.splice(+action.value, 1);
+    return {
+      tasks,
+      count : tasks.length,
+    }
+  }
+
   return state ? state : INITIAL_TASKS;
 }
 
@@ -37,11 +46,16 @@ const TasksContextProvider = ({ children }) => {
 
   const addTask = (task) => {
     dispatchTasks({ type: 'ADD_TASK', value: task})
+  };
+
+  const removeTask = (taskIndex) => {
+    dispatchTasks({ type: 'REMOVE_TASK', value: taskIndex })
   }
 
   const value = {
     tasksData,
     addTask,
+    removeTask,
   };
 
   return(
