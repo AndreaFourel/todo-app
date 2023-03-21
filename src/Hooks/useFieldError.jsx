@@ -5,7 +5,7 @@ const useFieldError = () => {
 
   const [error, setError] = useState(null);
 
-  const validateField = (value, { type, required, minLength, maxLength, onError }) => {
+  const validateField = (value, { type, required, minLength, maxLength }) => {
 
     if (type && typeof value !== type) {
       setError(`The value must be ${type}`);
