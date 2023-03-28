@@ -17,6 +17,7 @@ const TaskTimer = ({ index, onCloseModal }) => {
     return () => {//equivalent d'un componentWillUnmount
       stopTimer();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleStopTimer = () => {
